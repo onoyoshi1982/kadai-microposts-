@@ -12,7 +12,7 @@
     </aside>
     <div class="col-xs-8">
       <%= render 'microposts/microposts', microposts: @microposts %>
-      <%= link_to 'お気に入り一覧', likes_2_user_path(current_user), class: 'btn btn-default' %>
+      <%= link_to 'お気に入り一覧', likes_user_path(current_user), class: 'btn btn-default' %>
     </div>
   </div>
 <% else %>

@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
+  
+  get 'users/:id/likes', to: 'users#likes_2', as: 'likes_user'
+  
   resources :users, only: [:index, :show, :new, :create] do
     member do
       get :followings
