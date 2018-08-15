@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes_2]
   
   def index
     @users = User.all.page(params[:page])
@@ -40,12 +40,15 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def likes_2
+    @user = User.find(params[:id])
+    @microposts = @user.likes_2.order('created_at DESC').page(params[:page])
+  end
+  
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
-  
   
 end
